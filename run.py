@@ -35,11 +35,21 @@ def get_user_choice():
             name = 'Scissors'
         #print user choice 
         print("User choice is \n", name)
+
+def get_computer_choice():
+    print('Now it is the Computers turn....')
+    """
+    The computer will use random input to select a random number between 1,2 and 3
+
+    """
+    computer_choice = random.randint(1, 3)
+
 def main ():
     """
     Run all program functions
     """
     get_user_choice()
+    get_computer_choice()
 
 
 
