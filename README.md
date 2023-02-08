@@ -19,6 +19,7 @@ In the image below you are able to see how the games main page will look on diff
  ### Solved bugs
  (IndentationError: unindent does not match any outer indentation level) this error accured during the user choice development in the line of code : choice = int(input("Enter your choice:" ))
  - In order to resolve it following steps were taken:
+    alligning the code properly 
 
 
 
