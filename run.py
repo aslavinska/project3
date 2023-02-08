@@ -51,11 +51,13 @@ def get_computer_choice():
     print("Computer choice is \n", computer_choice_name)
     return computer_choice
 
-def main ():
+def main():
     """
     Run all program functions
     """
-    get_user_choice()
-    get_computer_choice()
+    user_selection = get_user_choice()
+    print(user_selection)
+    computer_selection = get_computer_choice()
+    print(computer_selection)
 
 main()
