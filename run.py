@@ -20,6 +20,7 @@ data = records.get_all_values()
 print("Welcome to Rock, Paper, Scissors game. \n")
 print("Winnin rules of the game are: \n Paper beats rock \n Rock beats scissors \n Scissors beats paper \n")
 
+
 def get_user_choice():
     print("Enter your choice \n 1 - Rock \n 2 - Paper \n 3 - Scissors \n")
     # Take user input
@@ -51,47 +52,66 @@ def get_computer_choice():
     print("Computer choice is \n", computer_choice_name)
     return computer_choice
 
+
 def condition_check():
     user_selection = int(get_user_choice())
     print(user_selection)
     computer_selection = int(get_computer_choice())
     print(computer_selection)
-    computerscore = 0
-    userscore = 0
+    playerwon = False
+    draw = False
+
     # check draw
     if user_selection == computer_selection:
         print("It is a Draw \n", end="")
+        draw = True
     # condition for winning
     if (user_selection == 1 and computer_selection == 2):
         print("Player won, paper wins => \n", end="")
-        userscore = userscore + 1
+        playerwon = True
+       # userscore = userscore + 1
     elif (user_selection == 2 and computer_selection == 1):
         print("Computer won, paper wins => \n", end="")
-        computerscore = computerscore + 1
+       # computerscore = computerscore + 1
     if (user_selection == 1 and computer_selection == 3):
         print("Player won, Rock wins=>\n", end="")
-        userscore = userscore + 1
+        playerwon = True
+       # userscore = userscore + 1
     elif (user_selection == 3 and computer_selection == 1):
         print("Computer won, Rock wins=>\n", end="")
-        computerscore = computerscore + 1
+       # computerscore = computerscore + 1
     if (user_selection == 2 and computer_selection == 3):
         print("Player won, scissors win => \n", end="")
-        userscore = userscore + 1
+        playerwon = True
+       # userscore = userscore + 1
     elif (user_selection == 3 and computer_selection == 2):
         print("Computer won, scissors win => \n", end="")
-        computerscore = computerscore + 1
-        
-    print("userscore: ", userscore)
-    print("computerscore: ", computerscore)
-    return userscore, computerscore
+       # computerscore = computerscore + 1
+    return playerwon, draw
+   # print("userscore: ", userscore)
+   # print("computerscore: ", computerscore)
+   # return userscore, computerscore
     
 
 def main():
     """
     Run all program functions
     """
+    userscore = 0
+    computerscore = 0
     while True:
-        condition_check()
+        
+        playerwon, draw = condition_check()
+        print("playerwon", playerwon)
+        print("draw", draw)
+        if (playerwon):
+            userscore = userscore + 1
+        elif (draw):
+            print("draw", draw)
+        else:
+            computerscore = computerscore + 1
+        print("userscore", userscore)
+        print("computerscore", computerscore)
         print("Do you want to play again? (Y/N)")
 
         ans = input().lower()
