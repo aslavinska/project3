@@ -1,6 +1,7 @@
-import random
+
 import gspread
 from google.oauth2.service_account import Credentials
+import random
 
 # The SCOPE lists the APIs that the program should access in order to run.
 SCOPE = [
@@ -8,7 +9,6 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
     ]
-
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
@@ -35,6 +35,7 @@ def get_user_choice():
         user_choice_name = 'Scissors'
     print("User choice is \n", user_choice_name)
     return user_choice
+
 
 def get_computer_choice():
     print('Now it is the Computers turn....')
@@ -69,34 +70,46 @@ def condition_check():
     if (user_selection == 1 and computer_selection == 2):
         print("Player won, paper wins => \n", end="")
         playerwon = True
-       # userscore = userscore + 1
+       
     elif (user_selection == 2 and computer_selection == 1):
         print("Computer won, paper wins => \n", end="")
-       # computerscore = computerscore + 1
+       
     if (user_selection == 1 and computer_selection == 3):
         print("Player won, Rock wins=>\n", end="")
         playerwon = True
-       # userscore = userscore + 1
+       
     elif (user_selection == 3 and computer_selection == 1):
         print("Computer won, Rock wins=>\n", end="")
-       # computerscore = computerscore + 1
+      
     if (user_selection == 2 and computer_selection == 3):
         print("Player won, scissors win => \n", end="")
         playerwon = True
-       # userscore = userscore + 1
+       
     elif (user_selection == 3 and computer_selection == 2):
         print("Computer won, scissors win => \n", end="")
-       # computerscore = computerscore + 1
+
     return playerwon, draw
-   # print("userscore: ", userscore)
-   # print("computerscore: ", computerscore)
-   # return userscore, computerscore
-    
+
+
+def update_worksheet(data):
+    """
+    Update the specified worksheet,
+    adding a new row with the list data provided.
+    """
+    print(f"Updating worksheet...\n")
+    records_worksheet = SHEET.worksheet("records")
+
+    # adds new row to the end of the current data
+    records_worksheet.append_row(data)
+
+    print(f"worksheet updated successfully\n")   
+
 
 def main():
     """
     Run all program functions
     """
+    player_name = input("Enter your players name: \n")
     userscore = 0
     computerscore = 0
     while True:
@@ -117,6 +130,11 @@ def main():
         ans = input().lower()
         if ans == 'n':
             break
+    
     print("thanks for playing")
+    data = [player_name, userscore, computerscore]
+    print(data)
+    update_worksheet(data)
+
 
 main()
