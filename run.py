@@ -139,11 +139,9 @@ def main():
     time_stamp = calendar.timegm(current_GMT)
     date_time = datetime.fromtimestamp(time_stamp)
     str_time = date_time.strftime("%I%p %M:%S")
-    print(str_time)
-  #  date_time = datetime.fromtimestamp(time_stamp)
-    data = [str_time, player_name, userscore, computerscore]
+    str_date = date_time.strftime("%d-%b-%Y")
+    data = [str_date, str_time, player_name, userscore, computerscore]
     print(data)
     update_worksheet(data)
-
 
 main()
