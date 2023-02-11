@@ -2,6 +2,9 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import random
+import calendar
+import time
+from datetime import datetime
 
 # The SCOPE lists the APIs that the program should access in order to run.
 SCOPE = [
@@ -132,7 +135,13 @@ def main():
             break
     
     print("thanks for playing")
-    data = [player_name, userscore, computerscore]
+    current_GMT = time.gmtime()
+    time_stamp = calendar.timegm(current_GMT)
+    date_time = datetime.fromtimestamp(time_stamp)
+    str_time = date_time.strftime("%I%p %M:%S")
+    print(str_time)
+  #  date_time = datetime.fromtimestamp(time_stamp)
+    data = [str_time, player_name, userscore, computerscore]
     print(data)
     update_worksheet(data)
 
