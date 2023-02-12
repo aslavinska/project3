@@ -70,11 +70,11 @@ def condition_check():
         print("It is a Draw \n", end="")
         draw = True
     # condition for winning
-    if (user_selection == 1 and computer_selection == 2):
+    if (user_selection == 2 and computer_selection == 1):
         print("Player won, paper wins => \n", end="")
         playerwon = True
        
-    elif (user_selection == 2 and computer_selection == 1):
+    elif (user_selection == 1 and computer_selection == 2):
         print("Computer won, paper wins => \n", end="")
        
     if (user_selection == 1 and computer_selection == 3):
@@ -99,13 +99,28 @@ def update_worksheet(data):
     Update the specified worksheet,
     adding a new row with the list data provided.
     """
-    print(f"Updating worksheet...\n")
+    print("Updating worksheet...\n")
     records_worksheet = SHEET.worksheet("records")
 
     # adds new row to the end of the current data
     records_worksheet.append_row(data)
 
-    print(f"worksheet updated successfully\n")   
+    print("worksheet updated successfully\n")   
+
+def get_last_5_entires():
+    """
+    Collect columns of data from the worksheet.
+    Get the last 5 entries of the players.
+    """
+
+    records = SHEET.worksheet("records")
+
+    columns = []
+    for ind in range(1, 7):
+        column = records.col_values(ind)
+        columns.append(column[-3:])
+
+    return columns
 
 
 def main():
@@ -143,5 +158,7 @@ def main():
     data = [str_date, str_time, player_name, userscore, computerscore]
     print(data)
     update_worksheet(data)
+    lastentries = get_last_5_entires()
+    print(lastentries)
 
 main()

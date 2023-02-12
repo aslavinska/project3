@@ -14,7 +14,7 @@ When the game is launched the user will be asked to enter their username. After 
 
 - ## Existing Features
 When the player exits the game the score with time,date stamp and user name will be uploaded to the google excel sheet on google cloud, [the link to the document](https://docs.google.com/spreadsheets/d/1F5zwRo01onh-AabcT0iuz1QTQHAk1fY6IeQYId1ddes/edit#gid=1680754323)
-After this is done the last 5 entries from the table will be displayed to the player before the end of the program and exit from the console. 
+After this is done the last 3 entries from the table will be displayed to the player before the end of the program and exit from the console. 
 
 # Testing
 
