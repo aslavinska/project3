@@ -31,7 +31,8 @@ After this is done the last 3 entries from the table will be displayed to the pl
 
 ## Validator Testing 
 - PEP8
-    - No errors were returned from PEP8online.com
+    - No errors were returned from PEP8online.com, see the image below:
+    ![PEP8](/images/pep8%20validator.jpg.jpg)
 
 ## Unfixed Bugs
 

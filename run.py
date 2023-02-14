@@ -21,7 +21,8 @@ records = SHEET.worksheet('records')
 
 data = records.get_all_values()
 print("Welcome to Rock, Paper, Scissors game. \n")
-print("Winnin rules of the game are: \n Paper beats rock \n Rock beats scissors \n Scissors beats paper \n")
+print("Winnin rules of the game are: \n")
+print("Paper beats rock \n Rock beats scissors \n Scissors beats paper \n")
 
 
 def get_user_choice():
@@ -34,7 +35,7 @@ def get_user_choice():
         user_choice_name = 'Rock'
     elif user_choice == 2:
         user_choice_name = 'Paper'
-    else: 
+    else:
         user_choice_name = 'Scissors'
     print("User choice is \n", user_choice_name)
     return user_choice
@@ -43,7 +44,7 @@ def get_user_choice():
 def get_computer_choice():
     print('Now it is the Computers turn....')
     computer_choice = random.randint(1, 3)
-         
+
     # initialize value of computer_choice_name
     # variable corresponding to the choice value
     if computer_choice == 1:
@@ -73,21 +74,21 @@ def condition_check():
     if (user_selection == 2 and computer_selection == 1):
         print("Player won, paper wins => \n", end="")
         playerwon = True
-       
+
     elif (user_selection == 1 and computer_selection == 2):
         print("Computer won, paper wins => \n", end="")
-       
+
     if (user_selection == 1 and computer_selection == 3):
         print("Player won, Rock wins=>\n", end="")
         playerwon = True
-       
+
     elif (user_selection == 3 and computer_selection == 1):
         print("Computer won, Rock wins=>\n", end="")
-      
+
     if (user_selection == 2 and computer_selection == 3):
         print("Player won, scissors win => \n", end="")
         playerwon = True
-       
+
     elif (user_selection == 3 and computer_selection == 2):
         print("Computer won, scissors win => \n", end="")
 
@@ -104,8 +105,8 @@ def update_worksheet(data):
 
     # adds new row to the end of the current data
     records_worksheet.append_row(data)
+    print("worksheet updated successfully\n")
 
-    print("worksheet updated successfully\n")   
 
 def get_last_5_entires():
     """
@@ -131,7 +132,7 @@ def main():
     userscore = 0
     computerscore = 0
     while True:
-        
+
         playerwon, draw = condition_check()
         print("playerwon", playerwon)
         print("draw", draw)
@@ -148,7 +149,7 @@ def main():
         ans = input().lower()
         if ans == 'n':
             break
-    
+
     print("thanks for playing")
     current_GMT = time.gmtime()
     time_stamp = calendar.timegm(current_GMT)
@@ -160,5 +161,6 @@ def main():
     update_worksheet(data)
     lastentries = get_last_5_entires()
     print(lastentries)
+
 
 main()
