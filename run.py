@@ -1,4 +1,3 @@
-
 import gspread
 from google.oauth2.service_account import Credentials
 import random
@@ -138,8 +137,6 @@ def main():
     while True:
 
         playerwon, draw = condition_check()
-        print("playerwon", playerwon)
-        print("draw", draw)
         if (playerwon):
             userscore = userscore + 1
         elif (draw):

@@ -14,13 +14,29 @@ When the game is launched the user will be asked to enter their username. After 
 
 - ## Existing Features
 When the player exits the game the score with time,date stamp and user name will be uploaded to the google excel sheet on google cloud, [the link to the document](https://docs.google.com/spreadsheets/d/1F5zwRo01onh-AabcT0iuz1QTQHAk1fY6IeQYId1ddes/edit#gid=1680754323)
-After this is done the last 3 entries from the table will be displayed to the player before the end of the program and exit from the console. 
+After this is done the last game entry and the first game entry from the table will be displayed to the player before the end of the program and exit from the console. 
 
-# Data Model 
 
 # Testing
 
 ### Test Use case 1
+Positive case scenario when user enters the required integer data from 1 to 3:
+
+![TestCase1](/images/testcase1.jpg)
+
+### Test Use case 2
+User enters a number outside 1 to 3 range:
+
+![TestCase2](/images/testcase2.jpg)
+
+The program will continue looping until a correct integer is entered.
+
+### Test Use Case 3
+User enters not a number: 
+
+![TestCase3](/images/testcase3.jpg)
+
+The program will continue looping until a correct integer is entered.
 
  ## Bugs 
 
@@ -57,3 +73,4 @@ The live link can be found here - [Rock, Paper, Scissors](https://aslavinska.git
 ## Content
 - The idea for the project has been provided by the Code Institute.  
 - The template for the Read.me file has been taked from Code Institute. 
+- Game tutorial can be found here - [Tutorial](https://www.geeksforgeeks.org/python-program-implement-rock-paper-scissor-game/)
