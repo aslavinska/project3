@@ -115,12 +115,11 @@ def get_last_3_entires():
 
     records = SHEET.worksheet("records")
 
-    columns = []
-    for ind in range(1, 7):
-        column = records.col_values(ind)
-        columns.append(column[-3:])
+    player_res_col = records.col_values(4)
 
-    return columns
+    for i in range(1, len(player_res_col)):
+        player_res_col[i] = int(player_res_col[i])
+    print(player_res_col)
 
 
 def main():
@@ -132,7 +131,7 @@ def main():
     data = records.get_all_values()
     print("Welcome to Rock, Paper, Scissors game. \n")
     print("Winnin rules of the game are: \n")
-    print(" Paper beats rock \n Rock beats scissors \n Scissors beats paper \n")
+    print("Paper beats rock \nRock beats scissors \nScissors beats paper \n")
     player_name = input("Enter your players name: \n")
     userscore = 0
     computerscore = 0
@@ -162,10 +161,15 @@ def main():
     str_time = date_time.strftime("%I%p %M:%S")
     str_date = date_time.strftime("%d-%b-%Y")
     data = [str_date, str_time, player_name, userscore, computerscore]
-    print(data)
     update_worksheet(data)
-    lastentries = get_last_3_entires()
-    print(lastentries)
+    records = SHEET.worksheet("records")
+    player_names_col = records.col_values(3)
+    rownum = player_names_col.index(player_name)+1
+    row = records.row_values(rownum)
+    print("Your last game result:")
+    print(data)
+    print("Your first game result:")
+    print(row)
 
 
 main()
