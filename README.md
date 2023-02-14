@@ -4,7 +4,7 @@ This game is a Rock, Paper, Scissors game. User is playing agains the computer a
 At the end of the game the user will be able to see their score vs computer score. The game is designed to be unlimited until the user selects that they do not wish to continue the game.
 In the image below you are able to see how the games main page will look on different devices. 
 
-![Responsive](/assets/images/Responsive.jpg)
+![Responsive](/images/Responsive.jpg)
 
 # How to play
 
@@ -20,6 +20,8 @@ After this is done the last 3 entries from the table will be displayed to the pl
 
 # Testing
 
+### Test Use case 1
+
  ## Bugs 
 
  ### Solved bugs
@@ -32,7 +34,7 @@ After this is done the last 3 entries from the table will be displayed to the pl
 ## Validator Testing 
 - PEP8
     - No errors were returned from PEP8online.com, see the image below:
-    ![PEP8](/images/pep8%20validator.jpg.jpg)
+    ![PEP8](/images/pep8%20validator.jpg)
 
 ## Unfixed Bugs
 

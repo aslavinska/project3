@@ -17,28 +17,28 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('project3')
 
-records = SHEET.worksheet('records')
-
-data = records.get_all_values()
-print("Welcome to Rock, Paper, Scissors game. \n")
-print("Winnin rules of the game are: \n")
-print("Paper beats rock \n Rock beats scissors \n Scissors beats paper \n")
-
 
 def get_user_choice():
     print("Enter your choice \n 1 - Rock \n 2 - Paper \n 3 - Scissors \n")
     # Take user input
-    user_choice = int(input("Enter a your choice here: "))
-    while user_choice > 3 or user_choice < 1:
-        user_choice = int(input("Enter a valid choice please: "))
-    if user_choice == 1:
-        user_choice_name = 'Rock'
-    elif user_choice == 2:
-        user_choice_name = 'Paper'
-    else:
-        user_choice_name = 'Scissors'
-    print("User choice is \n", user_choice_name)
-    return user_choice
+    # user_choice = int(input("Enter a your choice here: "))
+    user_input = input("Enter a your choice here: ")
+
+    try:
+        user_choice = int(user_input)
+        while user_choice > 3 or user_choice < 1:
+            user_choice = int(input("Enter a valid choice please: "))
+        if user_choice == 1:
+            user_choice_name = 'Rock'
+        elif user_choice == 2:
+            user_choice_name = 'Paper'
+        else:
+            user_choice_name = 'Scissors'
+        print("User choice is ", user_choice_name)
+        return user_choice
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again\n")
+        return get_user_choice()
 
 
 def get_computer_choice():
@@ -54,15 +54,14 @@ def get_computer_choice():
     else:
         computer_choice_name = 'Scissors'
 
-    print("Computer choice is \n", computer_choice_name)
+    print("Computer choice is ", computer_choice_name)
     return computer_choice
 
 
 def condition_check():
     user_selection = int(get_user_choice())
-    print(user_selection)
     computer_selection = int(get_computer_choice())
-    print(computer_selection)
+
     playerwon = False
     draw = False
 
@@ -71,21 +70,21 @@ def condition_check():
         print("It is a Draw \n", end="")
         draw = True
     # condition for winning
-    if (user_selection == 2 and computer_selection == 1):
+    elif (user_selection == 2 and computer_selection == 1):
         print("Player won, paper wins => \n", end="")
         playerwon = True
 
     elif (user_selection == 1 and computer_selection == 2):
         print("Computer won, paper wins => \n", end="")
 
-    if (user_selection == 1 and computer_selection == 3):
+    elif (user_selection == 1 and computer_selection == 3):
         print("Player won, Rock wins=>\n", end="")
         playerwon = True
 
     elif (user_selection == 3 and computer_selection == 1):
         print("Computer won, Rock wins=>\n", end="")
 
-    if (user_selection == 2 and computer_selection == 3):
+    elif (user_selection == 2 and computer_selection == 3):
         print("Player won, scissors win => \n", end="")
         playerwon = True
 
@@ -108,10 +107,10 @@ def update_worksheet(data):
     print("worksheet updated successfully\n")
 
 
-def get_last_5_entires():
+def get_last_3_entires():
     """
     Collect columns of data from the worksheet.
-    Get the last 5 entries of the players.
+    Get the top 3 highest scores of the players.
     """
 
     records = SHEET.worksheet("records")
@@ -128,6 +127,12 @@ def main():
     """
     Run all program functions
     """
+    records = SHEET.worksheet('records')
+
+    data = records.get_all_values()
+    print("Welcome to Rock, Paper, Scissors game. \n")
+    print("Winnin rules of the game are: \n")
+    print(" Paper beats rock \n Rock beats scissors \n Scissors beats paper \n")
     player_name = input("Enter your players name: \n")
     userscore = 0
     computerscore = 0
@@ -139,11 +144,11 @@ def main():
         if (playerwon):
             userscore = userscore + 1
         elif (draw):
-            print("draw", draw)
+            print("Its a draw")
         else:
             computerscore = computerscore + 1
-        print("userscore", userscore)
-        print("computerscore", computerscore)
+        print("Player score", userscore)
+        print("Computer score", computerscore)
         print("Do you want to play again? (Y/N)")
 
         ans = input().lower()
@@ -159,7 +164,7 @@ def main():
     data = [str_date, str_time, player_name, userscore, computerscore]
     print(data)
     update_worksheet(data)
-    lastentries = get_last_5_entires()
+    lastentries = get_last_3_entires()
     print(lastentries)
 
 
