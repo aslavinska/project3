@@ -66,7 +66,6 @@ def condition_check():
 
     # check draw
     if user_selection == computer_selection:
-        print("It is a Draw \n", end="")
         draw = True
     # condition for winning
     elif (user_selection == 2 and computer_selection == 1):
@@ -143,7 +142,7 @@ def main():
         if (playerwon):
             userscore = userscore + 1
         elif (draw):
-            print("Its a draw")
+            print("It is a draw \n")
         else:
             computerscore = computerscore + 1
         print("Player score", userscore)
