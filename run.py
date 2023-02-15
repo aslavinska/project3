@@ -122,19 +122,6 @@ def get_last_3_entires():
     return columns
 
 
-def calculate_average_wins(data):
-    """
-    Calculate the average number of wins for the user played
-    """
-    print("Calculating avarage number of wins...\n")
-    win_data = []
-    for column in data:
-        int_column = [int(num) for num in column]
-        average = sum(int_column) / len(int_column)
-        win_data.append(round(average))
-    return win_data
-
-
 def main():
     """
     Run all program functions
