@@ -114,11 +114,25 @@ def get_last_3_entires():
 
     records = SHEET.worksheet("records")
 
-    player_res_col = records.col_values(4)
+    columns = []
+    for ind in range(1, 7):
+        column = records.col_values(ind)
+        columns.append(column[-3:])
 
-    for i in range(1, len(player_res_col)):
-        player_res_col[i] = int(player_res_col[i])
-    print(player_res_col)
+    return columns
+
+
+def calculate_average_wins(data):
+    """
+    Calculate the average number of wins for the user played
+    """
+    print("Calculating avarage number of wins...\n")
+    win_data = []
+    for column in data:
+        int_column = [int(num) for num in column]
+        average = sum(int_column) / len(int_column)
+        win_data.append(round(average))
+    return win_data
 
 
 def main():
@@ -134,9 +148,11 @@ def main():
     player_name = input("Enter your players name: \n")
     userscore = 0
     computerscore = 0
+    number_of_games = 0
     while True:
 
         playerwon, draw = condition_check()
+        number_of_games = number_of_games + 1
         if (playerwon):
             userscore = userscore + 1
         elif (draw):
@@ -167,6 +183,9 @@ def main():
     print(data)
     print("Your first game result:")
     print(row)
+    print("Last 3 games played:")
+    last_entries = get_last_3_entires()
+    print(last_entries)
 
 
 main()
