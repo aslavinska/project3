@@ -66,7 +66,7 @@ The project was deployed using Code Institute's mock terminal for Heroku.
     - Link the Heroku app to the repository
     - Click on Deploy 
 
-The live link can be found here - [Rock, Paper, Scissors](https://aslavinskaproject3.herokuapp.com/).
+The live link can be found here - [Rock, Paper, Scissors](https://aslavinska-project3-a607bc0ac5e5.herokuapp.com/).
 
 # Credits
 
